@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
+  <div class="card shadow p-4" style="width: 400px; border-radius: 12px">
+    <h3 class="text-center mb-4">User Registration</h3>
+
+    <form>
+      <!-- Name -->
+      <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fa fa-user"></i></span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter full name"
+          />
+        </div>
+      </div>
+
+      <!-- Mobile -->
+      <div class="mb-3">
+        <label class="form-label">Mobile</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fa fa-phone"></i></span>
+          <input
+            type="tel"
+            class="form-control"
+            placeholder="Enter mobile number"
+          />
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Enter email address"
+          />
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <div class="input-group">
+          <span
+            class="input-group-text"
+            style="cursor: pointer"
+            (click)="togglePassword()"
+          >
+            <i
+              class="fa"
+              [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+            ></i>
+          </span>
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            class="form-control"
+            placeholder="Enter password"
+          />
+        </div>
+      </div>
+
+      <!-- Register button -->
+      <button type="submit" class="btn btn-success w-100">Register</button>
+
+      <!-- Links -->
+      <div class="text-center mt-3">
+        <p class="mb-1">
+          Already have an account?
+          <a
+            (click)="navigateTo()"
+            class="text-decoration-none cursor-pointer"
+            style="cursor: pointer"
+            >Sign In</a
+          >
+        </p>
+      </div>
+    </form>
+  </div>
+</div>
