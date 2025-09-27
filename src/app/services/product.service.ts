@@ -2,25 +2,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import {
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor,
-} from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class ProductService {
   constructor(private http: HttpClient, public router: Router) {}
-
-  getUserIdFromStorage() {
-    const userData = localStorage.getItem('registeredUser');
-    if (userData) {
-      const userId = JSON.parse(userData);
-      return userId.id
-    }
-  }
 
   private createHeader(): HttpHeaders {
     let localData: any = localStorage.getItem('jwtToken');
@@ -32,25 +18,41 @@ export class AuthService {
     return headers;
   }
 
-  create(formData: any): Observable<any> {
+  createProd(formData: any): Observable<any> {
     return this.http.post(
-      'http://localhost:3500/v1/website/user/register',
+      'http://localhost:3500/v1/website/product/createProduct',
       formData
     );
   }
 
-  login(formData: any): Observable<any> {
-    return this.http.post(
-      'http://localhost:3500/v1/website/user/login',
-      formData
+  getAllProd(userId:any): Observable<any> {
+    return this.http.get(
+      `http://localhost:3500/v1/website/product/getUserProduct/${userId}`,
     );
   }
 
-  getById(id: any): Observable<any> {
+  getByIdProd(id: any): Observable<any> {
     const headers = this.createHeader();
 
     return this.http.get(
-      `http://localhost:3500/v1/website/user/getById/${id}`,
+      `http://localhost:3500/v1/website/product/getProductById/${id}`,
+      { headers }
+    );
+  }
+  updateProd(id: any, formData: any): Observable<any> {
+    const headers = this.createHeader();
+
+    return this.http.put(
+      `http://localhost:3500/v1/website/product/updateProduct/${id}`,
+      formData,       
+    { headers } 
+    );
+  }
+ deleteProd(id: any): Observable<any> {
+    const headers = this.createHeader();
+
+    return this.http.delete(
+      `http://localhost:3500/v1/website/product/deleteProduct/${id}`,
       { headers }
     );
   }
@@ -61,7 +63,7 @@ export class AuthService {
       localStorage.removeItem('jwtToken');
       localStorage.removeItem('registeredUser');
       console.log('User logged out successfully.');
-      this.router.navigate(['/auth/login']);
+      this.router.navigate(['/login']);
     } else {
       console.log('No token found, redirecting to login.');
       this.router.navigate(['/login']);

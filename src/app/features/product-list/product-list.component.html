@@ -1,0 +1,75 @@
+<div class="container my-4">
+  <div class="bg-white p-3 d-flex justify-content-end border-bottom">
+    <div class="col-2 text-start ps-0">
+      <button
+        type="button"
+        class="btn btn-danger px-5"
+        (click)="logOutConfirmModal()"
+      >
+       LogOut
+      </button>
+    </div>
+   
+  </div>
+  <div class="bg-white p-3 d-flex justify-content-end border-bottom">
+    <div class="col-4 text-start ps-0">
+      <button
+        type="button"
+        class="btn btn-primary px-5"
+        (click)="navigateTo('order_list')"
+      >
+        Go To Order List
+      </button>
+    </div>
+    <div class="col-4 text-start ps-0">
+      <button
+        type="button"
+        class="btn btn-primary px-5"
+        (click)="navigateTo('weather')"
+      >
+        Go To Weather List
+      </button>
+    </div>
+    <div class="col-4 text-end pe-0">
+      <button
+        type="button"
+        class="btn btn-primary px-5"
+        (click)="navigateTo('product')"
+      >
+        <i class="fa fa-plus me-2"></i> Add Product
+      </button>
+    </div>
+  </div>
+
+  <div class="row g-3 mt-3">
+     <div class="mt-4 mb-3">
+    <h3 class="fw-bold text-primary border-bottom pb-2">Product List</h3>
+  </div>
+    <div class="col-md-4" *ngFor="let product of products">
+      <div class="card shadow-sm h-100"  >
+        <div class="card-body" (click)="createOrder(product)" style="cursor: pointer">
+          <h5 class="card-title fw-bold mb-2">Name : {{ product.name }}</h5>
+          <p class="card-text text-truncate">Description : {{ product.des }}</p>
+          <p class="fw-bold text-primary">price : ₹ {{ product.price }}</p>
+        </div>
+        <div
+          class="card-footer bg-white border-top-0 d-flex justify-content-end gap-2"
+        >
+          <button
+            class="btn btn-sm btn-outline-primary"
+            (click)="editProd('/product', product)"
+          >
+            <i class="fa fa-edit"></i> Edit
+          </button>
+          <button
+            class="btn btn-sm btn-outline-danger"
+            (click)="openConfirmModal(product._id)"
+          >
+            <i class="fa fa-trash"></i> Delete
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <div class="mb-3">
+    <button class="btn btn-secondary" (click)="goBack()">
+      <i class="fa fa-arrow-left me-1"></i> Back
+    </button>
+  </div>
+  <h3 class="mb-4">Create Product</h3>
+
+  <form [formGroup]="form">
+    <!-- Name -->
+    <div class="mb-3">
+      <label class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="name"
+        placeholder="Enter product name"
+      />
+      
+    </div>
+
+    <!-- Price -->
+    <div class="mb-3">
+      <label class="form-label">Price</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="price"
+        placeholder="Enter price"
+      />
+     
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <textarea
+        class="form-control"
+        rows="3"
+        formControlName="des"
+        placeholder="Enter description"
+      ></textarea>
+    </div>
+
+    <!-- Buttons -->
+    <div class="text-start mt-4">
+      <button type="submit" class="btn btn-primary px-5" (click)="submit()">
+        Submit
+      </button>
+    </div>
+  </form>
+</div>

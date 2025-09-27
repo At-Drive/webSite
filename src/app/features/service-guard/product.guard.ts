@@ -1,10 +1,10 @@
 import { CanActivateFn, Router } from '@angular/router';
 
-export const authGuard: CanActivateFn = (route, state) => {
+export const productGuard: CanActivateFn = (route, state) => {
   const token = localStorage.getItem("jwtToken")
-  if (token) {
+  if (!token) {
     const router = new Router()
-    router.navigate(['product_list']) 
+    router.navigate(['auth/login']) 
     return false
   }
   

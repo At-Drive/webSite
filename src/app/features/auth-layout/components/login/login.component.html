@@ -2,16 +2,17 @@
   <div class="card shadow p-4" style="width: 350px; border-radius: 12px">
     <h3 class="text-center mb-4">User SignIn</h3>
 
-    <form>
+    <form [formGroup]="form">
       <!-- Email -->
       <div class="mb-3">
         <label class="form-label">Email</label>
-       <div class="input-group">
+        <div class="input-group">
           <span class="input-group-text"><i class="fa fa-envelope"></i></span>
           <input
             type="email"
             class="form-control"
             placeholder="Enter email address"
+            formControlName="email"
           />
         </div>
       </div>
@@ -34,13 +35,15 @@
             [type]="showPassword ? 'text' : 'password'"
             class="form-control"
             placeholder="Enter password"
+            formControlName="password"
           />
-          
         </div>
       </div>
 
       <!-- Sign in button -->
-      <button type="submit" class="btn btn-primary w-100">Sign In</button>
+      <button type="submit" class="btn btn-primary w-100" (click)="submit()">
+        Sign In
+      </button>
 
       <!-- Links -->
       <div class="text-center mt-3">

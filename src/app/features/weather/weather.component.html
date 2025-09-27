@@ -1,0 +1,26 @@
+<div class="container my-3">
+  <div class="mb-3">
+    <button class="btn btn-secondary" (click)="goBack()">
+      <i class="fa fa-arrow-left me-1"></i> Back
+    </button>
+  </div>
+  <h4>Weather Dashboard</h4>
+  <div class="mb-3">
+    <input
+      type="text"
+      [(ngModel)]="city"
+      class="form-control"
+      placeholder="Enter city"
+    />
+    <button class="btn btn-primary mt-2" (click)="getWeather()">
+      Get Weather
+    </button>
+  </div>
+
+  <div *ngIf="weatherData" class="card p-3 shadow-sm">
+    <h5>{{ weatherData.name }} Weather</h5>
+    <p>Temperature: {{ weatherData.main.temp }} °C</p>
+    <p>Humidity: {{ weatherData.main.humidity }}%</p>
+    <p>Condition: {{ weatherData.weather[0].description }}</p>
+  </div>
+</div>
